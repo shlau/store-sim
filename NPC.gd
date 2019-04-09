@@ -1,6 +1,7 @@
-extends Area2D
+extends "res://Character.gd"
 
-# walks to correct location
+# NPC character
+# walks to location
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,3 +10,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func walkTo(location):
+	pass

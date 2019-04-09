@@ -43,10 +43,7 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 17.0548
 
-[node name="SampleSprite" type="Area2D"]
-__meta__ = {
-"_edit_group_": true
-}
+[node name="SampleSprite" type="KinematicBody2D"]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

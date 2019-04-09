@@ -2,8 +2,11 @@ extends "res://Character.gd"
 
 var screen_size
 var speed = 300
+
 # player can move -- done
 # interact with objects
+
+var player_name = "" # get from start of game
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -29,7 +32,7 @@ func movements(delta):
 		$SampleSprite/AnimatedSprite.play()
 	else:
 		$SampleSprite/AnimatedSprite.stop()
-		
+	
 	# Making sure player doesn't leave the screen
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
@@ -48,3 +51,7 @@ func movements(delta):
 func interactions():
 	if Input.is_action_pressed("ui_accept"):
 		print("clicked on enter/space")
+
+func _on_Player_area_entered(area):
+	# stop walking
+	pass
