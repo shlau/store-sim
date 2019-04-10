@@ -3,13 +3,12 @@
 # Can walk to different areas
 
 extends "res://Characters/Character.gd"
-var walk = preload("res://Characters/Walk.gd").new()
 
 var npc 
 var animation
 var screen_size
 
-var direction = 0
+var direction = values.DOWN
 var visit = Array()
 var destination
 
@@ -33,12 +32,18 @@ func _physics_process(delta):
 	velocity = Vector2()
 	if visit.size()>0:
 		# if destination is pretty much there
-		if abs(destination.x - position.x) <= 10 and abs(destination.y - position.y) <= 10:
+		var margin = 10
+		if abs(destination.x - position.x) <= margin and abs(destination.y - position.y) <= margin:
 			visit.pop_front()
 			destination = visit.front()
 			print("Destination is: ", destination)
 		else:
-			walkTo(destination, delta)
+			var collision = move_and_collide(velocity * delta)
+			if collision:
+				velocity = velocity.slide(collision.normal)
+				walk.faceDirection(npc, direction)
+			else:
+				walkTo(destination, delta)
 	else:
 		walk.faceDirection(npc, direction)
 

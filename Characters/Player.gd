@@ -3,13 +3,12 @@
 # Can interact with objects
 
 extends "res://Characters/Character.gd"
-var walk = preload("res://Characters/Walk.gd").new()
 
 var player 
 var animation
 var screen_size
 
-var direction = 0 # down: 0, left: 1, right: 2, up: 3
+var direction = values.DOWN
 
 var speed = 300 # movement speed
 var speed_scale = 2 # frames/sec
@@ -27,10 +26,9 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.slide(collision.normal)
-		interact()
+		interact(collision.get_collider())
 	walk.move(player, delta) # move
-	
-	
+
 func inputs():
 	# Input movements
 	velocity = Vector2()
@@ -42,6 +40,7 @@ func inputs():
 	velocity.x = int(right) - int(left)
 	velocity.y = int(down) - int(up)
 
-func interact():
+func interact(collider):
 	if Input.is_action_just_pressed("ui_accept"):
-		print("Player pressed enter/space")
+		if collider.get_name() == "entrance" and direction == values.UP:
+			print("Player wants to interact with ", collider.get_name())
