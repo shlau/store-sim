@@ -1,13 +1,11 @@
 extends Node
 
 func move(player, delta):
-	print("move called")
 	var velocity = player.velocity
 	var direction = player.direction
 	
 	# Adding velocity
 	if velocity.length() > 0:
-		print("velocity > 0")
 		player.velocity = velocity.normalized() * player.speed
 		
 		# Set walking animation and direction
@@ -24,7 +22,6 @@ func move(player, delta):
 			player.animation.set_current_animation("Walk_up")
 			player.direction = 3
 	else:
-		print("velocity is 0")
 		# Set idle direction
 		faceDirection(player, direction)
 	
