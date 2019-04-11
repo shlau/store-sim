@@ -23,39 +23,56 @@ func _ready():
 
 	screen_size = get_viewport_rect().size
 
-	addDestination(Vector2(400,400))
+	addDestination(Vector2(100,100))
+	addDestination(Vector2(200,400))
+	addDestination(Vector2(500,300))
 	addDestination(Vector2(200,100))
+	
 	destination = visit.front()
 
 func _physics_process(delta):
 #	print(position)
 	velocity = Vector2()
 	if visit.size()>0:
+		
 		# if destination is pretty much there
 		var margin = 10
 		if abs(destination.x - position.x) <= margin and abs(destination.y - position.y) <= margin:
 			visit.pop_front()
-			destination = visit.front()
-			print("Destination is: ", destination)
+			destination = visit.front() if visit.size() > 0 else null
 		else:
 			var collision = move_and_collide(velocity * delta)
-			if collision:
-				velocity = velocity.slide(collision.normal)
-				walk.faceDirection(npc, direction)
-			else:
-				walkTo(destination, delta)
+#			if collision:
+#				print(collision)
+#				velocity = velocity.slide(collision.normal)
+			print("trying to walk to ", destination)
+			walkTo(destination, delta)
 	else:
+#		addDestination(Vector2(100,100))
+#		addDestination(Vector2(200,400))
+#		addDestination(Vector2(500,300))
+#		addDestination(Vector2(200,100))
+		print("facing ", direction)
 		walk.faceDirection(npc, direction)
 
 func walkTo(destination, delta):
-	if destination.x - position.x > 0:
-		velocity.x += 1 # move right
-	elif destination.x - position.x < 0:
-		velocity.x -= 1 # move left
-	elif destination.y - position.y > 0:
-		velocity.y += 1 # move down
-	elif destination.y - position.y < 0:
-		velocity.y -= 1 # move up
+	print("destination: ", destination)
+	print("position: ", position)
+	
+	var distanceX = destination.x - position.x
+	var distanceY = destination.y - position.y
+	
+	if abs(distanceX) > 10:
+		if destination.x - position.x > 0:
+			velocity.x += 1 # move right
+		elif destination.x - position.x < 0:
+			velocity.x -= 1 # move left
+	elif abs(distanceY) > 10:
+		if destination.y - position.y > 0:
+			velocity.y += 1 # move down
+		elif destination.y - position.y < 0:
+			velocity.y -= 1 # move up
+	print("velocity: ", velocity)
 	walk.move(npc, delta) # move
 
 func addDestination(location):
