@@ -30,7 +30,7 @@ func _physics_process(delta):
 			visit.pop_front()
 			destination = visit.front() if visit.size() > 0 else null
 		else:
-			var collision = move_and_collide(velocity * delta)
+#			var collision = move_and_collide(velocity * delta)
 #			if collision:
 #				print(collision)
 #				velocity = velocity.slide(collision.normal)

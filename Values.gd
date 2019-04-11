@@ -1,4 +1,10 @@
-var DOWN = 0
-var LEFT = 1
-var RIGHT = 2
-var UP = 3
+var DOWN
+var LEFT
+var RIGHT
+var UP
+
+func _ready():
+	DOWN = 0
+	LEFT = 1
+	RIGHT = 2
+	UP = 3
