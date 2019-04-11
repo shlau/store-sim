@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/pokemon_tileset_from_public_tiles_by_chaoticcherrycake_d5xdb0y.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 77.0027, 68.6348 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 23.4205, 10 )
+
+[node name="Pokemon Center" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 548, 1072.66, 108, 148 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.8, -44.39 )
+shape = SubResource( 1 )
+
+[node name="entrance" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entrance"]
+position = Vector2( -4.02, 37.86 )
+shape = SubResource( 2 )
+
