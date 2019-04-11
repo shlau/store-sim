@@ -4,22 +4,10 @@
 
 extends "res://Characters/Character.gd"
 
-var player 
-var animation
-var screen_size
-
-var direction = values.DOWN
-
-var speed = 300 # movement speed
-var speed_scale = 2 # frames/sec
-var velocity = Vector2()
-
 func _ready():
-	player = get_node('../Player')
+	body = get_node('../Player')
 	animation = $Sprite/AnimationPlayer
-	animation.set_speed_scale(speed_scale)
-	
-	screen_size = get_viewport_rect().size
+	direction = values.DOWN
 
 func _physics_process(delta):
 	inputs() # get key inputs
@@ -27,7 +15,7 @@ func _physics_process(delta):
 	if collision:
 #		velocity = velocity.slide(collision.normal)
 		interact(collision.get_collider())
-	walk.move(player, delta) # move
+	move(body, delta) # move
 
 func inputs():
 	# Input movements
