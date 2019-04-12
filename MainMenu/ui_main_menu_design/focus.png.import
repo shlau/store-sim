@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Options.png-c6657ede189948cdb149a13f1b45eb12.stex"
+path="res://.import/focus.png-c46779178e0e0d6ceb6491d250ebefb6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/ui_main_menu_design/Options.png"
-dest_files=[ "res://.import/Options.png-c6657ede189948cdb149a13f1b45eb12.stex" ]
+source_file="res://MainMenu/ui_main_menu_design/focus.png"
+dest_files=[ "res://.import/focus.png-c46779178e0e0d6ceb6491d250ebefb6.stex" ]
 
 [params]
 
