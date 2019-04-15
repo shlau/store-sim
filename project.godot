@@ -18,6 +18,11 @@ _global_script_class_icons={
 config/name="storesim"
 config/icon="res://icon.png"
 
+[autoload]
+
+BackgroundMusic="*res://MainMenu/ui_main_menu_design/Music/BackgroundMusic.tscn"
+Volume="*res://MainMenu/ui_main_menu_design/Music/Volume.tscn"
+
 [input]
 
 ui_enter={
