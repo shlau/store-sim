@@ -1,14 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://MainMenu/TitleScreen.gd" type="Script" id=1]
-[ext_resource path="res://MainMenu/ui_main_menu_design/title.png" type="Texture" id=2]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Menu_Assets/title.png" type="Texture" id=2]
 [ext_resource path="res://MainMenu/ui_main_menu_design/Buttons/NewGameButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://MainMenu/ui_main_menu_design/Buttons/ContinueButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://MainMenu/ui_main_menu_design/Buttons/OptionsButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://MainMenu/ui_main_menu_design/ver-01.png" type="Texture" id=6]
-[ext_resource path="res://MainMenu/ui_main_menu_design/characters.png" type="Texture" id=7]
-[ext_resource path="res://MainMenu/LoopingBg.gd" type="Script" id=8]
-[ext_resource path="res://MainMenu/ui_main_menu_design/background.png" type="Texture" id=9]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Menu_Assets/focus2.png" type="Texture" id=4]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Buttons/ContinueButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Buttons/OptionsButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Menu_Assets/ver-01.png" type="Texture" id=7]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Menu_Assets/characters.png" type="Texture" id=8]
+[ext_resource path="res://MainMenu/LoopingBg.gd" type="Script" id=9]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Menu_Assets/background.png" type="Texture" id=10]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Music/titlesong.ogg" type="AudioStream" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 386, 70 )
 
 [node name="TitleScreen" type="MarginContainer"]
 anchor_right = 1.0
@@ -46,20 +52,23 @@ size_flags_stretch_ratio = 0.0
 [node name="NewGameButton" parent="HBoxContainer/TextContainer/VBoxContainer/MenuOptions" instance=ExtResource( 3 )]
 margin_top = 0.0
 margin_bottom = 70.0
+custom_styles/focus = SubResource( 1 )
 
-[node name="ContinueButton" parent="HBoxContainer/TextContainer/VBoxContainer/MenuOptions" instance=ExtResource( 4 )]
+[node name="ContinueButton" parent="HBoxContainer/TextContainer/VBoxContainer/MenuOptions" instance=ExtResource( 5 )]
 margin_top = 74.0
 margin_bottom = 144.0
+custom_styles/focus = SubResource( 1 )
 
-[node name="OptionsButton" parent="HBoxContainer/TextContainer/VBoxContainer/MenuOptions" instance=ExtResource( 5 )]
+[node name="OptionsButton" parent="HBoxContainer/TextContainer/VBoxContainer/MenuOptions" instance=ExtResource( 6 )]
 margin_top = 148.0
 margin_bottom = 218.0
+custom_styles/focus = SubResource( 1 )
 
 [node name="GameInfoLabel" type="TextureRect" parent="HBoxContainer/TextContainer/VBoxContainer"]
 margin_top = 392.0
 margin_right = 386.0
 margin_bottom = 436.0
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="CharacterContainer" type="CenterContainer" parent="HBoxContainer"]
 editor/display_folded = true
@@ -74,16 +83,20 @@ margin_left = 64.0
 margin_top = 22.0
 margin_right = 520.0
 margin_bottom = 578.0
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 1920, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Background" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 margin_right = 1920.0
 margin_bottom = 1080.0
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
 
