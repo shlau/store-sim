@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MainMenu/ui_main_menu_design/GameScenes/MenuSelect.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Fonts/montserrat_60.tres" type="DynamicFont" id=2]
+
+[node name="MenuSelect" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.5
+margin_top = -80.0
+margin_right = 199.5
+margin_bottom = 80.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_right = 399.0
+margin_bottom = 160.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 399.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+text = "Game Scene"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 79.0
+margin_right = 399.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+clip_text = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
