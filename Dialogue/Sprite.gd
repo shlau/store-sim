@@ -12,6 +12,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
+# simulate a blinking underscore by changing visibility every 0.5 seconds
 func _on_Timer_timeout():
 	visible = !visible
