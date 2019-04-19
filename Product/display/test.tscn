@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Displays/floor.tres" type="TileSet" id=1]
-[ext_resource path="res://Displays/product.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Displays/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Displays/wall.tres" type="TileSet" id=4]
+[ext_resource path="res://Product/display/floor.tres" type="TileSet" id=1]
+[ext_resource path="res://Product/display/product.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Product/display/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Product/display/wall.tres" type="TileSet" id=4]
 
 [node name="Node" type="Node"]
 
