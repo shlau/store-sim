@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Product/roboto-black.tres" type="DynamicFont" id=1]
+
+[node name="MarginContainer" type="MarginContainer"]
+margin_left = 18.636
+margin_top = 9.78394
+margin_right = 1918.64
+margin_bottom = 1062.78
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1900.0
+margin_bottom = 1052.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1900.0
+margin_bottom = 5.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Day x
+"
+
