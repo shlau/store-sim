@@ -4,46 +4,36 @@
 
 extends "res://Characters/Character.gd"
 
-var visit
-var destination
+var path # list of points visiting
+var destination # current point moving towards
 
 func _ready():
 	body = get_node('../NPC')
 	animation = $Sprite/AnimationPlayer
 	direction = values.DOWN
-	visit = Array()
-	
-	addDestination(Vector2(100,100))
-	addDestination(Vector2(200,400))
-	addDestination(Vector2(500,300))
-	addDestination(Vector2(200,100))
-	
-	destination = visit.front()
+	path = Array()
+
+func init(spawn):
+	position = spawn
 
 func _physics_process(delta):
 	velocity = Vector2()
-	if visit.size()>0:
-		print("destination: ", destination)
+	if path.size()>0:
+		destination = path.front()
 		# if destination is pretty much there
 		var margin = 10
 		if abs(destination.x - position.x) <= margin and abs(destination.y - position.y) <= margin:
-			visit.pop_front()
-			destination = visit.front() if visit.size() > 0 else null
+			path.pop_front()
+			destination = path.front() if path.size() > 0 else null
 		else:
-#			var collision = move_and_collide(velocity * delta)
-#			if collision:
-#				print(collision)
-#				velocity = velocity.slide(collision.normal)
-			print("trying to walk to ", destination)
+			var collision = move_and_collide(velocity * delta)
+			if collision:
+				velocity = velocity.slide(collision.normal)
 			walkTo(destination, delta)
 	else:
-#		print("facing ", direction)
 		faceDirection(body, direction)
 
 func walkTo(destination, delta):
-#	print("destination: ", destination)
-#	print("position: ", position)
-	
 	var distanceX = destination.x - position.x
 	var distanceY = destination.y - position.y
 	
@@ -57,8 +47,11 @@ func walkTo(destination, delta):
 			velocity.y += 1 # move down
 		elif destination.y - position.y < 0:
 			velocity.y -= 1 # move up
-	print("velocity: ", velocity)
 	move(body, delta) # move
-
-func addDestination(location):
-	visit.append(location)
+	
+func add_destinations(locations):
+	for i in locations:
+		path.append(i)
+		
+func within_area(area, margin):
+	return abs(position.x-area.x) < margin and abs(position.y-area.y) < margin

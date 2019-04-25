@@ -9,6 +9,9 @@ func _ready():
 	animation = $Sprite/AnimationPlayer
 	direction = values.DOWN
 
+func init(spawn):
+	position = spawn
+
 func _physics_process(delta):
 	inputs() # get key inputs
 	var collision = move_and_collide(velocity * delta)
