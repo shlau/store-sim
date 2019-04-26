@@ -41,8 +41,9 @@ func _ready():
 func setup_characters():
 	add_player(entrance)
 	employees["reg1"] = add_npc(register[0])
-	employees["reg2"] = add_npc(backdoor)
-
+	employees["reg2"] = add_npc(backdoor)	
+	move_npc(employees["reg1"],entrance)
+	move_npc(employees["reg2"],entrance)
 func add_player(spawn):
 	player = preload("res://Characters/Player.tscn").instance()
 	player.init(entrance)

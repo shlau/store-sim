@@ -16,7 +16,7 @@ func _physics_process(delta):
 	inputs() # get key inputs
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-#		velocity = velocity.slide(collision.normal)
+		velocity = velocity.slide(collision.normal)
 		interact(collision.get_collider())
 	move(body, delta) # move
 
