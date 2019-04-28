@@ -41,6 +41,7 @@ func _ready():
 	setup_characters()
 	
 func setup_characters():
+#<<<<<<< HEAD
 #	add_player(entrance)
 	for i in range(12):
 		employees.append(add_npc(product_area[i+1]["employee"]))
@@ -51,6 +52,13 @@ func setup_characters():
 	move_npc(customers[0], register[1])
 #	move_npc(customers[1], register[2])
 
+#=======
+#	add_player(entrance)
+#	employees["reg1"] = add_npc(register[0])
+#	employees["reg2"] = add_npc(backdoor)	
+#	move_npc(employees["reg1"],entrance)
+#	move_npc(employees["reg2"],entrance)
+#>>>>>>> 86d1bc65077375a417056d8ea0850521e7e04d4d
 func add_player(spawn):
 	player = preload("res://Characters/Player.tscn").instance()
 	player.init(spawn)
