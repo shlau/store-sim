@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Characters/Character.gd" type="Script" id=1]
-[ext_resource path="res://Assets/gZ3c5.png" type="Texture" id=2]
+[ext_resource path="res://64x64.png" type="Texture" id=2]
+[ext_resource path="res://Assets/gZ3c5.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle_down"
@@ -127,14 +128,13 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 18.5153
-height = 16.8447
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10.8501, 16.0307 )
 
 [sub_resource type="NavigationPolygon" id=10]
-vertices = PoolVector2Array( -35.5969, -42.6899, 31.5607, -43.5659, 36.5245, 55.7105, -36.4729, 56.0025 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( -35.5969, -42.6899, 31.5607, -43.5659, 36.5245, 55.7105, -36.4729, 56.0025 ) ]
+vertices = PoolVector2Array( 15.4418, 20.9739, 16.5226, 21.9345, -16.4995, 21.9345, -15.659, 20.9739, -16.4995, -20.0936, -15.659, -18.7727, 16.5226, -20.0936, 15.4418, -18.7727 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4, 5 ), PoolIntArray( 6, 1, 0, 7 ), PoolIntArray( 4, 6, 7, 5 ) ]
+outlines = [ PoolVector2Array( -16.4995, -20.0936, 16.5226, -20.0936, 16.5226, 21.9345, -16.4995, 21.9345 ), PoolVector2Array( -15.659, -18.7727, 15.4418, -18.7727, 15.4418, 20.9739, -15.659, 20.9739 ) ]
 
 [node name="Character" type="KinematicBody2D"]
 position = Vector2( 0.888885, 0 )
@@ -143,9 +143,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -5.13 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 3 )
 vframes = 4
 hframes = 4
 
@@ -160,14 +165,13 @@ anims/Walk_right = SubResource( 7 )
 anims/Walk_up = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -2.13, 9.59 )
+position = Vector2( -1.34, 0 )
 scale = Vector2( 2, 2 )
 shape = SubResource( 9 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
-visible = false
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+scale = Vector2( 3, 3 )
 navpoly = SubResource( 10 )
 

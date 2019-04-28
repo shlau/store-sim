@@ -13,11 +13,18 @@ func init(spawn):
 	position = spawn
 
 func _physics_process(delta):
+	print(position)
 	inputs() # get key inputs
 	var collision = move_and_collide(velocity * delta)
-	if collision:
+#	if collision:
+#		pass
+		# if colliding with npc, can't move
+#		var collider_name = collision.get_collider().name.substr(0,3)
+#		if collider_name == 'npc':
+#			print("player colliding with npc")
+#			interact(collision.get_collider())
+#			pass
 #		velocity = velocity.slide(collision.normal)
-		interact(collision.get_collider())
 	move(body, delta) # move
 
 func inputs():
