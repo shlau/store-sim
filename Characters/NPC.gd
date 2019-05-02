@@ -23,7 +23,7 @@ func _ready():
 func _physics_process(delta):
 	velocity = Vector2()
 	if visit.size()>0:
-		print("destination: ", destination)
+#		print("destination: ", destination)
 		# if destination is pretty much there
 		var margin = 10
 		if abs(destination.x - position.x) <= margin and abs(destination.y - position.y) <= margin:
@@ -34,7 +34,7 @@ func _physics_process(delta):
 #			if collision:
 #				print(collision)
 #				velocity = velocity.slide(collision.normal)
-			print("trying to walk to ", destination)
+#			print("trying to walk to ", destination)
 			walkTo(destination, delta)
 	else:
 #		print("facing ", direction)
@@ -57,8 +57,8 @@ func walkTo(destination, delta):
 			velocity.y += 1 # move down
 		elif destination.y - position.y < 0:
 			velocity.y -= 1 # move up
-	print("velocity: ", velocity)
-	move(body, delta) # move
+#	print("velocity: ", velocity)
+#	move(body, delta) # move
 
 func addDestination(location):
 	visit.append(location)
