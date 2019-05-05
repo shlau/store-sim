@@ -12,11 +12,16 @@ var day #remove when have global variable
 var upgrade #remove when have global variable
 var money #remove when have global variable
 
+var stock_text = "Current stock: %s"
+var supply_text = "Supply price: %s"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initial_sell = 0
 	final_sell = 0
 	units = 0
+	supply_price = 0
+	day = 1
 	
 	var beta;
 	var alpha;

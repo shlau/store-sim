@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Product/ui/Product11.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://Product/Fonts/Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = SubResource( 7 )
+
+[sub_resource type="DynamicFontData" id=9]
+font_path = "res://Product/Fonts/ModernSans-Light.otf"
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+font_data = SubResource( 9 )
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Product/Fonts/ModernSans-Light.otf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 20
+font_data = SubResource( 11 )
+
+[sub_resource type="DynamicFontData" id=13]
+font_path = "res://Product/Fonts/Roboto-Light.ttf"
+
+[sub_resource type="DynamicFont" id=14]
+size = 30
+font_data = SubResource( 13 )
+
+[node name="amazon" type="HBoxContainer"]
+editor/display_folded = true
+margin_top = 104.0
+margin_right = 1068.0
+margin_bottom = 194.0
+script = ExtResource( 1 )
+
+[node name="prod info" type="VBoxContainer" parent="."]
+margin_right = 450.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 450, 90 )
+focus_neighbour_top = NodePath("../daily info")
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="prod info"]
+margin_right = 450.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="prod info/HBoxContainer"]
+
+[node name="name" type="HBoxContainer" parent="prod info"]
+margin_top = 4.0
+margin_right = 450.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="prod info/name"]
+margin_right = 200.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 200, 36 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="prod info/name"]
+margin_left = 204.0
+margin_right = 315.0
+margin_bottom = 36.0
+
+[node name="prod_name" type="Label" parent="prod info/name/HBoxContainer"]
+margin_right = 111.0
+margin_bottom = 36.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 8 )
+text = "Amazon"
+
+[node name="price" type="HBoxContainer" parent="prod info"]
+margin_top = 44.0
+margin_right = 450.0
+margin_bottom = 65.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="prod info/price"]
+margin_right = 250.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 250, 18 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="prod info/price"]
+margin_left = 254.0
+margin_right = 406.0
+margin_bottom = 21.0
+
+[node name="supply_price" type="Label" parent="prod info/price/HBoxContainer2"]
+margin_right = 152.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 10 )
+text = "Supply Price: $30"
+
+[node name="stock" type="HBoxContainer" parent="prod info"]
+margin_top = 69.0
+margin_right = 450.0
+margin_bottom = 90.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="prod info/stock"]
+margin_right = 250.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 250, 18 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="prod info/stock"]
+margin_left = 254.0
+margin_right = 408.0
+margin_bottom = 21.0
+
+[node name="stock" type="Label" parent="prod info/stock/HBoxContainer2"]
+margin_right = 154.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 12 )
+text = "Current Stock: %s"
+
+[node name="input price" type="HBoxContainer" parent="."]
+margin_left = 454.0
+margin_right = 1068.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 614, 90 )
+
+[node name="LineEdit" type="LineEdit" parent="input price"]
+margin_right = 100.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 100, 45 )
+custom_fonts/font = SubResource( 14 )
+text = "100"
+caret_blink = true
+
+[node name="Button" type="Button" parent="input price"]
+margin_left = 104.0
+margin_right = 140.0
+margin_bottom = 90.0
+text = "Buy"
+
+[connection signal="pressed" from="input price/Button" to="." method="_on_Button_pressed"]
