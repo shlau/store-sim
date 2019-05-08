@@ -4,7 +4,8 @@ extends Node
 var current_scene = null
 
 #Player
-var curr_money = 0
+var money = 0
+var upgrade = 0
 
 #Environment
 var day = 1
