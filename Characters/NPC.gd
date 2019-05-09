@@ -38,7 +38,7 @@ func _physics_process(delta):
 			path.pop_front()
 			destination = path.front() if path.size() > 0 else null
 		else:
-			var collision = move_and_collide(velocity * delta)
+#			var collision = move_and_collide(velocity * delta)
 			walkTo(destination, delta)
 	else:
 		faceDirection(body, direction)

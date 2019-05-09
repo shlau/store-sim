@@ -33,8 +33,10 @@ var player
 var employees_max
 var employees 
 var customers
-
+var count = 0
+var max_cust = 30
 func _ready():
+	randomize()
 	employees_max = 12
 	employees = []
 	customers = []
@@ -46,10 +48,10 @@ func setup_characters():
 	for i in range(12):
 		employees.append(add_npc(product_area[i+1]["employee"]))
 		
-	for i in range(12):
-		customers.append(add_npc(product_area[i+1]["customer"][0]))
+#	for i in range(12):
+#		customers.append(add_npc(product_area[i+1]["customer"][0]))
 #	employees.append(add_npc(backdoor))
-	move_npc(customers[0], register[1])
+#	move_npc(customers[0], register[1])
 #	move_npc(customers[1], register[2])
 
 #=======
@@ -66,7 +68,8 @@ func add_player(spawn):
 
 func add_npc(spawn):
 	var inpc =  preload("res://Characters/NPC.tscn").instance()
-	var name = "npc" + str(employees.size())
+	var name = "npc" + str(count)
+	count += 1
 	inpc.set_name(name)
 	add_child(inpc)
 	inpc.init(name, spawn)
@@ -96,3 +99,15 @@ func update_path(npc, location):
 	var path = get_node("Navigation2D").get_simple_path(npc.position, location)
 	npc.clear_path()
 	npc.add_destinations(path)
+
+func _on_SpawnTimeout_timeout():
+	if(customers.size() >= 2):
+		$SpawnTimeout.stop()
+	else:
+		var rand = randi()%12 + 1
+		var dest = product_area[rand]["employee"]
+		dest.y += 100
+		var npc = add_npc(entrance)
+		customers.append(npc)
+		move_npc(npc,dest)
+	

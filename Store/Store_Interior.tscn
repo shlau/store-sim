@@ -22,6 +22,7 @@ __meta__ = {
 }
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_group_": true
 }
@@ -32,3 +33,8 @@ navpoly = SubResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 970, 400 )
 
+[node name="SpawnTimeout" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimeout" to="." method="_on_SpawnTimeout_timeout"]
