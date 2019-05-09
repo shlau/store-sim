@@ -52,7 +52,7 @@ func move(body, delta):
 	body.position += body.velocity * delta
 	
 	# Making sure player doesn't leave the screen
-	var margin = 10
+	var margin = 20
 	body.position.x = clamp(body.position.x, margin, body.screen_size.x-margin)
 	body.position.y = clamp(body.position.y, margin, body.screen_size.y-margin)
 	
