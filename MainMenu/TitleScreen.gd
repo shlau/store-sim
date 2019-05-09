@@ -6,6 +6,11 @@ var enter_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#Centers window
+	var screen_size = OS.get_screen_size()
+	var window_size = OS.get_window_size()
+	OS.set_window_position(screen_size*0.5 - window_size*0.5)
+	
 #	load sound effect resources
 	select_player = AudioStreamPlayer.new()
 	enter_player = AudioStreamPlayer.new()

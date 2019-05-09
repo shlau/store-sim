@@ -24,12 +24,16 @@ func _ready():
        5379.0 , 5551.03, 5884.67, 5207.25, 4908.29, 5002.62, 4849.33,
        4846.15, 4575.52, 4352.18, 4027.4 , 3654.53, 3993.5 , 3932.91,
        4132.39, 4464.46, 4691.24]
-	if (day > 115):
+	if (Global.day > 115):
 		var gamma = 1.63
-		supply_price = round(gamma * 495.11103220217115 * exp(0.01559115 * (day-1)) * rand_range(0.95, 1.05))
+		supply_price = round(gamma * 495.11103220217115 * exp(0.01559115 * (Global.day-1)) * rand_range(0.95, 1.05))
 	else:
-		supply_price = round(price_array[day-1] * rand_range(0.95, 1.05))
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		supply_price = round(price_array[Global.day-1] * rand_range(0.95, 1.05))
+	$"info/prod info/stock/HBoxContainer2/stock".set_text(stock_text % units)
+	$"info/prod info/price/HBoxContainer2/supply_price".set_text(supply_text % supply_price)
+	$"info/prod info/name/HBoxContainer/prod_name".set_text(product_name)
+       
+func _on_Button_pressed():
+	var bought_stock = int($"info/input price/buy_stock".get_text())
+	_buy_units(bought_stock)
+       

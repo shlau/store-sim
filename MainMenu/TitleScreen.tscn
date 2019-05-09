@@ -16,7 +16,6 @@ texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 386, 70 )
 
 [node name="TitleScreen" type="MarginContainer"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_left = 50
@@ -28,10 +27,12 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 
 [node name="TextContainer" type="CenterContainer" parent="HBoxContainer"]
+editor/display_folded = true
 margin_right = 386.0
 margin_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/TextContainer"]
+editor/display_folded = true
 margin_top = 322.0
 margin_right = 386.0
 margin_bottom = 758.0
@@ -43,6 +44,7 @@ margin_bottom = 116.0
 texture = ExtResource( 2 )
 
 [node name="MenuOptions" type="VBoxContainer" parent="HBoxContainer/TextContainer/VBoxContainer"]
+editor/display_folded = true
 margin_top = 145.0
 margin_right = 386.0
 margin_bottom = 363.0
@@ -53,6 +55,7 @@ size_flags_stretch_ratio = 0.0
 margin_top = 0.0
 margin_bottom = 70.0
 custom_styles/focus = SubResource( 1 )
+scene_path = "Product/ui/boxes.tscn"
 
 [node name="ContinueButton" parent="HBoxContainer/TextContainer/VBoxContainer/MenuOptions" instance=ExtResource( 5 )]
 margin_top = 74.0
