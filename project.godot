@@ -16,14 +16,11 @@ _global_script_class_icons={
 [application]
 
 config/name="storesim"
-
-run/main_scene="res://MainMenu/TitleScreen.tscn"
-
+run/main_scene="res://Store/Store_Interior.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://global.gd"
 BackgroundMusic="*res://MainMenu/ui_main_menu_design/Music/BackgroundMusic.tscn"
 Volume="*res://MainMenu/ui_main_menu_design/Music/Volume.tscn"
 

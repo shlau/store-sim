@@ -31,11 +31,20 @@ func split_text(text):
 			numChar = 0
 	return temp_dialog
 
+func clear_dialog():
+	visible = false
+	numVisible = 0
+	$DialogText.visible_characters = 0
+	$Timer.stop()
+	$Underscore/Timer.stop()
+	
 # display the given text in the dialog box
 func show_dialog(text):
+	visible = true
 	dialog = split_text(text)
 	$DialogText.set_bbcode(dialog[page_count])
 	$Timer.start()
+	$Underscore/Timer.start()
 	
 # increase the number of visible characters every 0.02 seconds
 func _on_Timer_timeout():
