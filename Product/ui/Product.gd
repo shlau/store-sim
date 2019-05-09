@@ -52,7 +52,7 @@ func _buy_units(num):
 	Global.money = Global.money - cost
 	if num > 0:
 		units = units + num
-		$"prod info/stock/HBoxContainer2/stock".set_text(stock_text % units)
+		$"info/prod info/stock/HBoxContainer2/stock".set_text(stock_text % units)
 	
 func _sell_units(): #run at the end of every work phase; lose money for leftover units
 	Global.money -= round(units * supply_price * 1.05)

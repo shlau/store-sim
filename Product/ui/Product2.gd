@@ -27,12 +27,12 @@ func _ready():
 	else:
 		supply_price = round(price_array[Global.day-1] * rand_range(0.95, 1.05))
 	#Setting text for products
-	$"prod info/stock/HBoxContainer2/stock".set_text(stock_text % units)
-	$"prod info/price/HBoxContainer2/supply_price".set_text(supply_text % supply_price)
-	$"prod info/name/HBoxContainer/prod_name".set_text(product_name)
+	$"info/prod info/stock/HBoxContainer2/stock".set_text(stock_text % units)
+	$"info/prod info/price/HBoxContainer2/supply_price".set_text(supply_text % supply_price)
+	$"info/prod info/name/HBoxContainer/prod_name".set_text(product_name)
 
 
 func _on_Button_pressed():
-        var bought_stock = int($"input price/LineEdit".get_text())
+        var bought_stock = int($"info/input price/buy_stock".get_text())
         _buy_units(bought_stock)
         
