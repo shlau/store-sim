@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Store/Store_Interior.gd" type="Script" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Store/Register.tscn" type="PackedScene" id=4]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1920, 1080, 0, 1080, 360, 870, 410, 870, 1700, 730, 1560, 730, 360, 420, 410, 420, 740, 420, 1050, 290, 1180, 280, 1180, 420, 870, 290, 1700, 420, 1700, 280, 1920, 0, 220, 870, 740, 280, 870, 170, 0, 0, 220, 730, 1050, 170, 1560, 870, 1510, 870, 1510, 730, 1370, 730, 1560, 280, 1560, 420, 1510, 420, 1510, 280, 360, 730, 220, 420, 1700, 870, 1370, 420, 1320, 420, 1320, 280, 1370, 280, 600, 280, 1370, 870, 1320, 870, 1320, 730, 1180, 730, 1180, 870, 740, 730, 740, 870, 600, 730, 600, 420, 550, 420, 550, 280, 410, 280, 360, 280, 220, 280, 600, 870, 550, 870, 550, 730, 410, 730 )
@@ -36,5 +37,9 @@ position = Vector2( 970, 400 )
 [node name="SpawnTimeout" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Register" parent="." instance=ExtResource( 4 )]
+position = Vector2( 960, 230 )
+scale = Vector2( 2, 2 )
 
 [connection signal="timeout" from="SpawnTimeout" to="." method="_on_SpawnTimeout_timeout"]

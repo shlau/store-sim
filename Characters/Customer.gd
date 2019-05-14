@@ -8,6 +8,3 @@ var patience
 func _ready():
 	product = null
 	offer = 0.0
-
-func init():
-	pass
