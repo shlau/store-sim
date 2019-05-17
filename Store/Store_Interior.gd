@@ -29,14 +29,34 @@ var product_area = {
 }
 
 var player
-
+#var cust_dict = {1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[],10:[],11:[],12:[]}
+var cust_dict = [[],[],[],[],[],[],[],[],[],[],[],[]]
+var grid
 var employees_max
 var employees 
 var customers
 var count = 0
 var max_cust = 30
+
+func on_area_mouseclick(viewport, event, shape_idx,i):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+#			print(str(event) + " at " + str(i))
+			var custs = cust_dict[i-1]			
+			print("customers: " + str(custs))
+			grid.destroy_grid()
+			grid.create_grid(custs,0,0)
+			
 func _ready():
 	randomize()
+#	$Area2D1.connect("input_event",self,"test")
+	for i in range(1,13):
+		var area_str = "Area2D" + str(i)
+		var ar = get_node(area_str)
+		ar.connect("input_event",self,"on_area_mouseclick",[i])
+#		ar.connect("mouse_entered",self,"on_area_exited")
+#		ar.connect("mouse_exited",self,"on_area_entered",[i])
+	grid = $GridContainer
 	employees_max = 12
 	employees = []
 	customers = []
@@ -101,7 +121,7 @@ func update_path(npc, location):
 	npc.add_destinations(path)
 
 func _on_SpawnTimeout_timeout():
-	if(customers.size() >= 2):
+	if(customers.size() >= max_cust):
 		$SpawnTimeout.stop()
 	else:
 		var rand = randi()%12 + 1
@@ -109,5 +129,5 @@ func _on_SpawnTimeout_timeout():
 		dest.y += 100
 		var npc = add_npc(entrance)
 		customers.append(npc)
+		cust_dict[rand-1].append(npc)
 		move_npc(npc,dest)
-	

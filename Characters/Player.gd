@@ -13,7 +13,7 @@ func init(spawn):
 	position = spawn
 
 func _physics_process(delta):
-	print(position)
+#	print(position)
 	inputs() # get key inputs
 	var collision = move_and_collide(velocity * delta)
 #<<<<<<< HEAD

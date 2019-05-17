@@ -1,19 +1,48 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Store/Store_Interior.gd" type="Script" id=1]
-[ext_resource path="res://tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Fonts/slkscr.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Store/GridContainer.gd" type="Script" id=5]
 
-[sub_resource type="NavigationPolygon" id=1]
+[sub_resource type="GradientTexture" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="NavigationPolygon" id=3]
 vertices = PoolVector2Array( 1920, 1080, 0, 1080, 360, 870, 410, 870, 1700, 730, 1560, 730, 360, 420, 410, 420, 740, 420, 1050, 290, 1180, 280, 1180, 420, 870, 290, 1700, 420, 1700, 280, 1920, 0, 220, 870, 740, 280, 870, 170, 0, 0, 220, 730, 1050, 170, 1560, 870, 1510, 870, 1510, 730, 1370, 730, 1560, 280, 1560, 420, 1510, 420, 1510, 280, 360, 730, 220, 420, 1700, 870, 1370, 420, 1320, 420, 1320, 280, 1370, 280, 600, 280, 1370, 870, 1320, 870, 1320, 730, 1180, 730, 1180, 870, 740, 730, 740, 870, 600, 730, 600, 420, 550, 420, 550, 280, 410, 280, 360, 280, 220, 280, 600, 870, 550, 870, 550, 730, 410, 730 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 12, 9, 8 ), PoolIntArray( 13, 14, 15, 0 ), PoolIntArray( 16, 2, 1 ), PoolIntArray( 12, 8, 17, 18 ), PoolIntArray( 16, 1, 19, 20 ), PoolIntArray( 10, 9, 21 ), PoolIntArray( 5, 22, 23, 24 ), PoolIntArray( 6, 5, 24 ), PoolIntArray( 6, 24, 25 ), PoolIntArray( 26, 27, 28, 29 ), PoolIntArray( 30, 20, 19, 31 ), PoolIntArray( 27, 13, 0 ), PoolIntArray( 28, 27, 0, 4 ), PoolIntArray( 15, 14, 26 ), PoolIntArray( 0, 32, 4 ), PoolIntArray( 33, 28, 4 ), PoolIntArray( 33, 4, 34 ), PoolIntArray( 33, 34, 35, 36 ), PoolIntArray( 22, 32, 0 ), PoolIntArray( 35, 10, 21, 15 ), PoolIntArray( 18, 17, 37, 19 ), PoolIntArray( 11, 34, 4 ), PoolIntArray( 15, 26, 29 ), PoolIntArray( 15, 29, 36 ), PoolIntArray( 8, 11, 4 ), PoolIntArray( 23, 22, 0 ), PoolIntArray( 38, 23, 0 ), PoolIntArray( 38, 0, 39 ), PoolIntArray( 25, 38, 39, 40 ), PoolIntArray( 6, 25, 40 ), PoolIntArray( 6, 40, 41 ), PoolIntArray( 31, 6, 41, 42, 43 ), PoolIntArray( 15, 36, 35 ), PoolIntArray( 19, 15, 21, 18 ), PoolIntArray( 42, 39, 0 ), PoolIntArray( 42, 0, 44 ), PoolIntArray( 42, 44, 43 ), PoolIntArray( 31, 43, 45 ), PoolIntArray( 46, 8, 4 ), PoolIntArray( 46, 4, 47 ), PoolIntArray( 37, 46, 47, 48 ), PoolIntArray( 19, 37, 48 ), PoolIntArray( 19, 48, 49 ), PoolIntArray( 7, 47, 4 ), PoolIntArray( 49, 7, 6, 50 ), PoolIntArray( 19, 49, 50 ), PoolIntArray( 19, 50, 51 ), PoolIntArray( 19, 51, 31 ), PoolIntArray( 52, 44, 0 ), PoolIntArray( 52, 0, 53 ), PoolIntArray( 45, 52, 53, 54 ), PoolIntArray( 31, 45, 54 ), PoolIntArray( 31, 54, 55 ), PoolIntArray( 30, 31, 55 ), PoolIntArray( 30, 55, 3, 2 ), PoolIntArray( 0, 3, 53 ) ]
 outlines = [ PoolVector2Array( 1920, 0, 0, 0, 0, 1080, 1920, 1080 ), PoolVector2Array( 220, 280, 360, 280, 360, 420, 220, 420 ), PoolVector2Array( 410, 280, 550, 280, 550, 420, 410, 420 ), PoolVector2Array( 600, 280, 740, 280, 740, 420, 600, 420 ), PoolVector2Array( 870, 170, 870, 290, 1050, 290, 1050, 170 ), PoolVector2Array( 1180, 280, 1320, 280, 1320, 420, 1180, 420 ), PoolVector2Array( 1370, 280, 1510, 280, 1510, 420, 1370, 420 ), PoolVector2Array( 1560, 280, 1700, 280, 1700, 420, 1560, 420 ), PoolVector2Array( 1560, 730, 1700, 730, 1700, 870, 1560, 870 ), PoolVector2Array( 1370, 730, 1370, 870, 1510, 870, 1510, 730 ), PoolVector2Array( 1180, 730, 1320, 730, 1320, 870, 1180, 870 ), PoolVector2Array( 600, 730, 740, 730, 740, 870, 600, 870 ), PoolVector2Array( 410, 730, 550, 730, 550, 870, 410, 870 ), PoolVector2Array( 220, 730, 360, 730, 360, 870, 220, 870 ) ]
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 41.3401, 60 )
+
 [node name="Store Interior" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 267.0
+margin_bottom = 19.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+margin_right = 267.0
+margin_bottom = 19.0
+texture = SubResource( 5 )
+region_rect = Rect2( 23.625, -2.713, 2.25, 2.875 )
+patch_margin_left = 202
+patch_margin_top = 19
+patch_margin_right = 65
+
+[node name="Label" type="Label" parent="MarginContainer/NinePatchRect"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 6 )
+text = "Patience"
+
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 collision_use_kinematic = true
 format = 1
 tile_data = PoolIntArray( 196622, 1, 0, 196623, 1, 0, 327684, 1, 0, 327687, 1, 0, 327690, 1, 0, 327699, 1, 0, 327702, 1, 0, 327705, 1, 0, 786436, 1, 0, 786439, 1, 0, 786442, 1, 0, 786451, 1, 0, 786454, 1, 0, 786457, 1, 0 )
@@ -28,13 +57,91 @@ __meta__ = {
 }
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
-navpoly = SubResource( 1 )
+navpoly = SubResource( 3 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 970, 400 )
 
 [node name="SpawnTimeout" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 20 )
+script = ExtResource( 5 )
+
+[node name="Area2D1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D1"]
+position = Vector2( 290, 420 )
+shape = SubResource( 4 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 480, 420 )
+shape = SubResource( 4 )
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2( 670, 420 )
+shape = SubResource( 4 )
+
+[node name="Area2D4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2( 1250, 420 )
+shape = SubResource( 4 )
+
+[node name="Area2D5" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2( 1440, 420 )
+shape = SubResource( 4 )
+
+[node name="Area2D6" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6"]
+position = Vector2( 1630, 420 )
+shape = SubResource( 4 )
+
+[node name="Area2D7" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D7"]
+position = Vector2( 290, 860 )
+shape = SubResource( 4 )
+
+[node name="Area2D8" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D8"]
+position = Vector2( 480, 860 )
+shape = SubResource( 4 )
+
+[node name="Area2D9" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D9"]
+position = Vector2( 670, 860 )
+shape = SubResource( 4 )
+
+[node name="Area2D10" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D10"]
+position = Vector2( 1250, 870 )
+shape = SubResource( 4 )
+
+[node name="Area2D11" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D11"]
+position = Vector2( 1440, 870 )
+shape = SubResource( 4 )
+
+[node name="Area2D12" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D12"]
+position = Vector2( 1630, 870 )
+shape = SubResource( 4 )
 
 [connection signal="timeout" from="SpawnTimeout" to="." method="_on_SpawnTimeout_timeout"]
