@@ -28,6 +28,22 @@ var product_area = {
 	12: {"employee": Vector2(1628, 735), "customer": [Vector2(1628, 864), Vector2(1628, 928)]},
 }
 
+var lines = {
+	"register":[],
+	"p1":[],
+	"p2":[],
+	"p3":[],
+	"p4":[],
+	"p5":[],
+	"p6":[],
+	"p7":[],
+	"p8":[],
+	"p9":[],
+	"p10":[],
+	"p11":[],
+	"p12":[]
+}
+
 var player
 
 var employees_max
@@ -36,13 +52,11 @@ var customers
 var count = 0
 var max_cust = 30
 
-var register_line
 func _ready():
 	randomize()
 	employees_max = 12
 	employees = []
 	customers = []
-	register_line = []
 	setup_characters()
 	
 	player = $Player
@@ -79,7 +93,7 @@ func _process(delta):
 
 func move_npc(npc, location):
 	if location == register[1]:
-		register_line.append(npc)
+		lines["register"].append(npc)
 	var path = get_node("Navigation2D").get_simple_path(npc.position, location)
 	npc.add_destinations(path)
 
@@ -120,10 +134,10 @@ func check_player():
 
 func player_work_register():
 	print("player wants to work at the register")
-	if register_line.size() >= 1:
-		var customer = register_line[0]
+	if lines["register"].size() >= 1:
+		var customer = lines["register"][0]
 		Global.money += customer.offer # add earnings to global
 		move_npc(customer, entrance) # send customer to entrance
-		register_line.remove(0)# remove customer from list
+		lines["register"].remove(0)# remove customer from list
 	else:
 		print("no customers are at the register")
