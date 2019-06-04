@@ -10,22 +10,38 @@ extends Node2D
 #var register # [[top, bottom]]
 #var product_area # {1:[top,bottom], 2:[Vector2(),Vector2()], ...}
 
-var entrance = Vector2(963, 983)
-var backdoor = Vector2(444,45)
-var register = [Vector2(960,157), Vector2(963,288), Vector2(960,350)]
+var entrance = Vector2(1033, 915)
+var backdoor = Vector2(330,95)
+var register = [Vector2(1022,205), Vector2(1022,335)]
 var product_area = {
-	1: {"employee": Vector2(288, 287), "customer": [Vector2(288, 416), Vector2(288, 481)]},
-	2: {"employee": Vector2(478, 287), "customer": [Vector2(478, 416), Vector2(478, 481)]},
-	3: {"employee": Vector2(671, 287), "customer": [Vector2(671, 416), Vector2(671, 481)]},
-	4: {"employee": Vector2(1248, 287), "customer": [Vector2(1248, 416), Vector2(1248, 481)]},
-	5: {"employee": Vector2(1438, 287), "customer": [Vector2(1438, 416), Vector2(1438, 481)]},
-	6: {"employee": Vector2(1628, 287), "customer": [Vector2(1628, 416), Vector2(1628, 481)]},
-	7: {"employee": Vector2(288, 735), "customer": [Vector2(288, 864), Vector2(288, 928)]},
-	8: {"employee": Vector2(478, 735), "customer": [Vector2(478, 864), Vector2(478, 928)]},
-	9: {"employee": Vector2(671, 735), "customer": [Vector2(671, 864), Vector2(671, 928)]},
-	10: {"employee": Vector2(1248, 735), "customer": [Vector2(1248, 864), Vector2(1248, 928)]},
-	11: {"employee": Vector2(1438, 735), "customer": [Vector2(1438, 864), Vector2(1438, 928)]},
-	12: {"employee": Vector2(1628, 735), "customer": [Vector2(1628, 864), Vector2(1628, 928)]},
+	1: {"employee": Vector2(490, 287), "customer": Vector2(490, 330)},
+	2: {"employee": Vector2(610, 287), "customer": Vector2(610, 330)},
+	3: {"employee": Vector2(490, 287), "customer": Vector2(490, 380)},
+	4: {"employee": Vector2(610, 287), "customer": Vector2(610, 380)},
+	5: {"employee": Vector2(490, 287), "customer": Vector2(490, 430)},
+	6: {"employee": Vector2(610, 287), "customer": Vector2(610, 430)},
+	7: {"employee": Vector2(1450, 735), "customer": Vector2(288, 330)},
+	8: {"employee": Vector2(1570, 735), "customer": Vector2(478, 330)},
+	9: {"employee": Vector2(1450, 735), "customer": Vector2(671, 380)},
+	10: {"employee": Vector2(1570, 735), "customer": Vector2(1248, 380)},
+	11: {"employee": Vector2(1450, 735), "customer": Vector2(1438, 430)},
+	12: {"employee": Vector2(1570, 735), "customer": Vector2(1628, 430)},
+}
+
+var lines = {
+	"register":[],
+	"p1":[],
+	"p2":[],
+	"p3":[],
+	"p4":[],
+	"p5":[],
+	"p6":[],
+	"p7":[],
+	"p8":[],
+	"p9":[],
+	"p10":[],
+	"p11":[],
+	"p12":[]
 }
 
 var player
@@ -35,6 +51,7 @@ var employees
 var customers
 var count = 0
 var max_cust = 30
+
 func _ready():
 	randomize()
 	employees_max = 12
@@ -42,33 +59,28 @@ func _ready():
 	customers = []
 	setup_characters()
 	
+	player = $Player
+	
 func setup_characters():
-#<<<<<<< HEAD
-#	add_player(entrance)
-	for i in range(12):
-		employees.append(add_npc(product_area[i+1]["employee"]))
-		
 #	for i in range(12):
-#		customers.append(add_npc(product_area[i+1]["customer"][0]))
-#	employees.append(add_npc(backdoor))
-#	move_npc(customers[0], register[1])
-#	move_npc(customers[1], register[2])
+#		employees.append(add_npc(product_area[i+1]["employee"]))
+		
+	for i in range(12):
+		customers.append(add_npc("customer", product_area[i+1]["customer"]))
+		move_npc(customers[i], register[1])
 
-#=======
-#	add_player(entrance)
-#	employees["reg1"] = add_npc(register[0])
-#	employees["reg2"] = add_npc(backdoor)	
-#	move_npc(employees["reg1"],entrance)
-#	move_npc(employees["reg2"],entrance)
-#>>>>>>> 86d1bc65077375a417056d8ea0850521e7e04d4d
 func add_player(spawn):
 	player = preload("res://Characters/Player.tscn").instance()
 	player.init(spawn)
 	add_child(player)
 
-func add_npc(spawn):
-	var inpc =  preload("res://Characters/NPC.tscn").instance()
-	var name = "npc" + str(count)
+func add_npc(type, spawn):
+	var inpc
+	if type == "employee":
+		inpc =  preload("res://Characters/Employee.tscn").instance()
+	elif type == "customer":
+		inpc =  preload("res://Characters/Customer.tscn").instance()
+	var name = type + str(count)
 	count += 1
 	inpc.set_name(name)
 	add_child(inpc)
@@ -76,22 +88,12 @@ func add_npc(spawn):
 	return inpc
 
 func _process(delta):
-#	for npc in employees:
-#		var velocity = npc.velocity
-#		var collision = npc.move_and_collide(velocity * delta/2)
-		
-#		if collision != null:
-#			if collision.get_collider().name == 'Player':
-#				print(collision.get_collider().name)
-#			print(collision.get_collider().get_class() == 'KinematicBody2D')
-#			if npc.path.size() > 0:
-#				update_path(npc, npc.path[-1])
-#			else:
-#				update_path(npc, npc.last_location)
-#			print(npc.path)
-	pass
+	check_player()
+	check_leaving_customers()
 
 func move_npc(npc, location):
+	if location == register[1]:
+		lines["register"].append(npc)
 	var path = get_node("Navigation2D").get_simple_path(npc.position, location)
 	npc.add_destinations(path)
 
@@ -101,13 +103,41 @@ func update_path(npc, location):
 	npc.add_destinations(path)
 
 func _on_SpawnTimeout_timeout():
-	if(customers.size() >= 2):
-		$SpawnTimeout.stop()
+	pass
+#	if(customers.size() >= 2):
+#		$SpawnTimeout.stop()
+#	else:
+#		var rand = randi()%12 + 1
+#		var dest = product_area[rand]["employee"]
+#		dest.y += 100
+#		var npc = add_npc(entrance)
+#		customers.append(npc)
+#		move_npc(npc,dest)
+
+func check_leaving_customers():
+	# If the NPC is leaving the store
+	var removed_customers = []
+	for i in range(customers.size()):
+		if (customers[i].within_area(entrance, 20) and customers[i].path.empty()): 
+			customers[i].queue_free()
+			print("customer ", customers[i].name, " freed")
+			removed_customers.append(i)
+	for i in removed_customers:
+		customers.remove(i);
+
+func check_player():
+	if player:
+		if player.collision: 
+			var collider = player.collision.collider
+			if collider.name == "Register" and player.direction == 0 and Input.is_action_just_pressed("ui_accept"):
+				player_work_register()
+
+func player_work_register():
+	print("player wants to work at the register")
+	if lines["register"].size() >= 1:
+		var customer = lines["register"][0]
+		Global.money += customer.offer # add earnings to global
+		move_npc(customer, entrance) # send customer to entrance
+		lines["register"].remove(0)# remove customer from list
 	else:
-		var rand = randi()%12 + 1
-		var dest = product_area[rand]["employee"]
-		dest.y += 100
-		var npc = add_npc(entrance)
-		customers.append(npc)
-		move_npc(npc,dest)
-	
+		print("no customers are at the register")
