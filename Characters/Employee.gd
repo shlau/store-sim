@@ -8,5 +8,6 @@ func _ready():
 	salary = 0.0
 	product_area = null
 
-func init(area):
-	product_area = area
+func init(node_name, spawn):
+#	product_area = area
+	pass

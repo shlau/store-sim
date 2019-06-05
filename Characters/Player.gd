@@ -4,6 +4,8 @@
 
 extends "res://Characters/Character.gd"
 
+var collision
+
 func _ready():
 	body = get_node('../Player')
 	animation = $Sprite/AnimationPlayer
@@ -13,24 +15,9 @@ func init(spawn):
 	position = spawn
 
 func _physics_process(delta):
-	print(position)
+#	print(position)
 	inputs() # get key inputs
-	var collision = move_and_collide(velocity * delta)
-#<<<<<<< HEAD
-#	if collision:
-#		pass
-		# if colliding with npc, can't move
-#		var collider_name = collision.get_collider().name.substr(0,3)
-#		if collider_name == 'npc':
-#			print("player colliding with npc")
-#			interact(collision.get_collider())
-#			pass
-#		velocity = velocity.slide(collision.normal)
-#=======
-#	if collision:
-#		velocity = velocity.slide(collision.normal)
-#		interact(collision.get_collider())
-#>>>>>>> 86d1bc65077375a417056d8ea0850521e7e04d4d
+	collision = move_and_collide(velocity * delta)
 	move(body, delta) # move
 
 func inputs():
