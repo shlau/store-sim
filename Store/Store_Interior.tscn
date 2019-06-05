@@ -1,15 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Store/Store_Interior.gd" type="Script" id=1]
 [ext_resource path="res://Store_Layout.png" type="Texture" id=2]
 [ext_resource path="res://tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Store/Register.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MainMenu/ui_main_menu_design/Fonts/slkscr.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Store/GridContainer.gd" type="Script" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1740, 480, 780, 320, 960, 300, 1100, 300, 1280, 320, 1920, 930, 150, 930, 460, 760, 640, 760, 1600, 480, 460, 320, 640, 320, 1740, 700, 1600, 700, 460, 540, 640, 540, 1740, 540, 1920, 40, 1740, 320, 320, 760, 1740, 260, 150, 40, 320, 700, 1600, 260, 780, 540, 780, 480, 1280, 480, 1280, 540, 780, 760, 780, 700, 1280, 700, 1280, 760, 1280, 260, 1100, 240, 780, 260, 960, 240, 1600, 540, 1420, 540, 1420, 480, 640, 480, 1600, 760, 1420, 760, 1420, 700, 640, 700, 1600, 320, 1420, 320, 1420, 260, 640, 260, 460, 260, 320, 320, 460, 480, 320, 540, 460, 700, 1740, 760, 320, 480, 320, 260 )
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 0, 9, 10, 11 ), PoolIntArray( 12, 13, 14, 15 ), PoolIntArray( 16, 17, 5, 12 ), PoolIntArray( 17, 16, 0 ), PoolIntArray( 18, 17, 0 ), PoolIntArray( 19, 7, 6 ), PoolIntArray( 17, 18, 20 ), PoolIntArray( 19, 6, 21, 22 ), PoolIntArray( 21, 17, 20, 23 ), PoolIntArray( 24, 25, 26, 27 ), PoolIntArray( 28, 29, 30, 31 ), PoolIntArray( 32, 4, 3, 33 ), PoolIntArray( 2, 1, 34, 35 ), PoolIntArray( 9, 36, 37, 38 ), PoolIntArray( 10, 9, 38 ), PoolIntArray( 10, 38, 26 ), PoolIntArray( 10, 26, 25 ), PoolIntArray( 10, 25, 39 ), PoolIntArray( 13, 40, 41, 42 ), PoolIntArray( 14, 13, 42 ), PoolIntArray( 14, 42, 30 ), PoolIntArray( 14, 30, 29 ), PoolIntArray( 14, 29, 43 ), PoolIntArray( 23, 44, 45, 46 ), PoolIntArray( 21, 23, 46 ), PoolIntArray( 21, 46, 32, 33 ), PoolIntArray( 21, 33, 35 ), PoolIntArray( 21, 35, 34, 47 ), PoolIntArray( 44, 18, 0 ), PoolIntArray( 21, 47, 11, 48 ), PoolIntArray( 45, 44, 0 ), PoolIntArray( 49, 10, 39, 15, 50 ), PoolIntArray( 51, 14, 43, 8, 52 ), PoolIntArray( 5, 53, 12 ), PoolIntArray( 36, 16, 12 ), PoolIntArray( 37, 36, 12 ), PoolIntArray( 40, 53, 5 ), PoolIntArray( 41, 40, 5 ), PoolIntArray( 27, 37, 12 ), PoolIntArray( 4, 45, 0 ), PoolIntArray( 24, 27, 12 ), PoolIntArray( 31, 41, 5 ), PoolIntArray( 28, 31, 5 ), PoolIntArray( 15, 24, 12 ), PoolIntArray( 15, 14, 50 ), PoolIntArray( 49, 50, 54 ), PoolIntArray( 11, 1, 0 ), PoolIntArray( 11, 10, 48 ), PoolIntArray( 21, 48, 55 ), PoolIntArray( 21, 55, 49 ), PoolIntArray( 21, 49, 54 ), PoolIntArray( 21, 54, 51 ), PoolIntArray( 22, 21, 51 ), PoolIntArray( 52, 22, 51 ), PoolIntArray( 7, 52, 8 ), PoolIntArray( 5, 8, 28 ) ]
 outlines = [ PoolVector2Array( 1920, 40, 150, 40, 150, 930, 1920, 930 ), PoolVector2Array( 320, 260, 460, 260, 460, 320, 320, 320 ), PoolVector2Array( 320, 480, 460, 480, 460, 540, 320, 540 ), PoolVector2Array( 640, 260, 780, 260, 780, 320, 640, 320 ), PoolVector2Array( 960, 240, 960, 300, 1100, 300, 1100, 240 ), PoolVector2Array( 1280, 260, 1420, 260, 1420, 320, 1280, 320 ), PoolVector2Array( 1280, 480, 1420, 480, 1420, 540, 1280, 540 ), PoolVector2Array( 1600, 260, 1740, 260, 1740, 320, 1600, 320 ), PoolVector2Array( 1600, 480, 1740, 480, 1740, 540, 1600, 540 ), PoolVector2Array( 1600, 700, 1600, 760, 1740, 760, 1740, 700 ), PoolVector2Array( 1280, 700, 1420, 700, 1420, 760, 1280, 760 ), PoolVector2Array( 640, 480, 780, 480, 780, 540, 640, 540 ), PoolVector2Array( 640, 700, 780, 700, 780, 760, 640, 760 ), PoolVector2Array( 320, 700, 460, 700, 460, 760, 320, 760 ) ]
+
+[sub_resource type="GradientTexture" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 44.1875, 52.3992 )
 
 [node name="Store Interior" type="Node2D"]
 script = ExtResource( 1 )
@@ -53,6 +64,7 @@ autostart = true
 position = Vector2( 1030, 270 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -60,5 +72,102 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 build_mode = 1
 polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 60, 150, 60, 150, 930, 1920, 930, 1920, 1080, 0, 1080 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 431.0
+margin_bottom = 38.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+margin_right = 431.0
+margin_bottom = 38.0
+texture = SubResource( 2 )
+region_rect = Rect2( 62.125, -9.38925, 60.875, 16.375 )
+patch_margin_left = 253
+patch_margin_top = 14
+patch_margin_bottom = 17
+
+[node name="Label" type="Label" parent="MarginContainer/NinePatchRect"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 3 )
+text = "Test label
+"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+
+[node name="Area2D1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D1"]
+position = Vector2( 425.229, 358.588 )
+shape = SubResource( 4 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 752.084, 360.175 )
+shape = SubResource( 4 )
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2( 1310.59, 360.175 )
+shape = SubResource( 4 )
+
+[node name="Area2D4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2( 1637.45, 360.175 )
+shape = SubResource( 4 )
+
+[node name="Area2D5" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2( 431.575, 587.07 )
+shape = SubResource( 4 )
+
+[node name="Area2D6" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6"]
+position = Vector2( 760.017, 583.896 )
+shape = SubResource( 4 )
+
+[node name="Area2D7" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D7"]
+position = Vector2( 1320.11, 575.963 )
+shape = SubResource( 4 )
+
+[node name="Area2D8" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D8"]
+position = Vector2( 1635.86, 577.55 )
+shape = SubResource( 4 )
+
+[node name="Area2D9" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D9"]
+position = Vector2( 433.162, 809.204 )
+shape = SubResource( 4 )
+
+[node name="Area2D10" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D10"]
+position = Vector2( 755.257, 813.964 )
+shape = SubResource( 4 )
+
+[node name="Area2D11" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D11"]
+position = Vector2( 1318.53, 810.791 )
+shape = SubResource( 4 )
+
+[node name="Area2D12" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D12"]
+position = Vector2( 1637.45, 802.857 )
+shape = SubResource( 4 )
 
 [connection signal="timeout" from="SpawnTimeout" to="." method="_on_SpawnTimeout_timeout"]

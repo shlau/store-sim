@@ -45,21 +45,38 @@ var lines = {
 }
 
 var player
-
+var cust_dict = [[],[],[],[],[],[],[],[],[],[],[],[]]
 var employees_max
 var employees 
 var customers
 var count = 0
 var max_cust = 30
-
+var grid
+func on_area_mouseclick(viewport, event, shape_idx,i):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+#			print(str(event) + " at " + str(i))
+			var custs = cust_dict[i-1]			
+			print("customers: " + str(custs))
+			grid.destroy_grid()
+			grid.create_grid(custs,0,0)
+			
 func _ready():
 	randomize()
 	employees_max = 12
 	employees = []
 	customers = []
-	setup_characters()
-	
+#	setup_characters()
+	grid = $GridContainer
 	player = $Player
+	for i in range(1,13):
+		var area_str = "Area2D" + str(i)
+		var ar = get_node(area_str)
+		ar.connect("input_event",self,"on_area_mouseclick",[i])
+	grid = $GridContainer
+	employees_max = 12
+	employees = []
+	customers = []
 	
 func setup_characters():
 #	for i in range(12):
@@ -103,16 +120,17 @@ func update_path(npc, location):
 	npc.add_destinations(path)
 
 func _on_SpawnTimeout_timeout():
-	pass
-#	if(customers.size() >= 2):
-#		$SpawnTimeout.stop()
-#	else:
-#		var rand = randi()%12 + 1
-#		var dest = product_area[rand]["employee"]
+	if(customers.size() >= max_cust):
+		$SpawnTimeout.stop()
+	else:
+		var rand = randi()%12 + 1
+		print(rand)
+		var dest = product_area[rand]["employee"]
 #		dest.y += 100
-#		var npc = add_npc(entrance)
-#		customers.append(npc)
-#		move_npc(npc,dest)
+		var npc = add_npc("customer",entrance)
+		customers.append(npc)
+		cust_dict[rand-1].append(npc)
+		move_npc(npc,dest)
 
 func check_leaving_customers():
 	# If the NPC is leaving the store
