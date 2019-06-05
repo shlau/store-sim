@@ -184,4 +184,5 @@ margin_bottom = 31.0
 caret_blink = true
 caret_blink_speed = 0.5
 
+[connection signal="text_entered" from="info/input price/buy_stock" to="." method="_on_buy_stock_text_entered"]
 [connection signal="pressed" from="info/input price/Button" to="." method="_on_Button_pressed"]

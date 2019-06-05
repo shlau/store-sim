@@ -46,3 +46,7 @@ func _ready():
 func _on_Button_pressed():
 	var bought_stock = int($"info/input price/buy_stock".get_text())
 	_buy_units(bought_stock)
+
+
+#func _on_buy_stock_text_entered(new_text):
+#	if (!new_text.is_valid_integer()):
