@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Store/Store_Interior.gd" type="Script" id=1]
 [ext_resource path="res://Store_Layout.png" type="Texture" id=2]
 [ext_resource path="res://tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Store/Register.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Product/display/product.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1740, 480, 780, 320, 960, 300, 1100, 300, 1280, 320, 1920, 930, 150, 930, 460, 760, 640, 760, 1600, 480, 460, 320, 640, 320, 1740, 700, 1600, 700, 460, 540, 640, 540, 1740, 540, 1920, 40, 1740, 320, 320, 760, 1740, 260, 150, 40, 320, 700, 1600, 260, 780, 540, 780, 480, 1280, 480, 1280, 540, 780, 760, 780, 700, 1280, 700, 1280, 760, 1280, 260, 1100, 240, 780, 260, 960, 240, 1600, 540, 1420, 540, 1420, 480, 640, 480, 1600, 760, 1420, 760, 1420, 700, 640, 700, 1600, 320, 1420, 320, 1420, 260, 640, 260, 460, 260, 320, 320, 460, 480, 320, 540, 460, 700, 1740, 760, 320, 480, 320, 260 )
@@ -60,5 +61,45 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 build_mode = 1
 polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 60, 150, 60, 150, 930, 1920, 930, 1920, 1080, 0, 1080 )
+
+[node name="Products" type="PanelContainer" parent="."]
+margin_right = 14.0
+margin_bottom = 14.0
+
+[node name="P1" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 395.331, 284.017 )
+
+[node name="P2" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 399.725, 508.56 )
+
+[node name="P3" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 395.616, 731.145 )
+
+[node name="P4" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 713.59, 287.076 )
+
+[node name="P5" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 707.438, 506.485 )
+
+[node name="P6" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 713.59, 734.096 )
+
+[node name="P7" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 1353.36, 285.026 )
+
+[node name="P8" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 1353.36, 512.637 )
+
+[node name="P9" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 1353.36, 734.096 )
+
+[node name="P10" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 1673.25, 285.026 )
+
+[node name="P11" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 1671.2, 514.687 )
+
+[node name="P12" parent="Products" instance=ExtResource( 6 )]
+position = Vector2( 1669.14, 732.045 )
 
 [connection signal="timeout" from="SpawnTimeout" to="." method="_on_SpawnTimeout_timeout"]
