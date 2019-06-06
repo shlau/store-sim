@@ -63,6 +63,7 @@ build_mode = 1
 polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 60, 150, 60, 150, 930, 1920, 930, 1920, 1080, 0, 1080 )
 
 [node name="Products" type="PanelContainer" parent="."]
+editor/display_folded = true
 margin_right = 14.0
 margin_bottom = 14.0
 
